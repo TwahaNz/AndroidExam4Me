@@ -15,6 +15,7 @@ import java.io.Serializable;
  */
 public class NonResidentStudent extends Student implements Serializable
 {
+    private Long id;
     private FeesImpl tuitionFee;
     private String studentName;
     private String studentNumber;
@@ -22,6 +23,11 @@ public class NonResidentStudent extends Student implements Serializable
     public NonResidentStudent(Builder builder){
         super(builder.studentName, "" + builder.studentNumber);
         tuitionFee = builder.tuitionFee;
+        this.id = builder.id;
+    }
+
+    public long getId(){
+        return id;
     }
 
     @Override
@@ -48,15 +54,20 @@ public class NonResidentStudent extends Student implements Serializable
         return tuitionFee.getStudentFee();
     }
 
-
     public static class Builder extends Student
     {
+        private Long id;
         private FeesImpl tuitionFee;
         private String studentName;
         private String studentNumber;
 
         public Builder(){
             tuitionFee = TuitionFee.getInstance();
+        }
+
+        public Builder id(long id){
+            this.id = id;
+            return this;
         }
 
         public Builder studentName(String studentName) {
@@ -104,6 +115,24 @@ public class NonResidentStudent extends Student implements Serializable
 
             return this;
         }
-    }
 
+        @Override
+        public int hashCode() {
+            return id != null? id.hashCode():0;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+
+            if(this == o)
+                return true;
+
+            if (o == null || this.getClass() != o.getClass())
+                return false;
+
+            NonResidentStudent student = (NonResidentStudent) o;
+
+            return id != null ? id.equals(student.id):student.id == null;
+        }
+    }
 }

@@ -12,6 +12,7 @@ import java.io.Serializable;
 
 public abstract class Student implements Serializable{
 
+    private long id;
     private Faculty studentFaculty;
     private int[] retrievedResults;
     
@@ -39,6 +40,10 @@ public abstract class Student implements Serializable{
     }
     public Student assignStudentFee(String course){
         studentCurrentFee = TuitionFee.getInstance().retrieveStudentCosts(course);
+        return this;
+    }
+    public Student assignId(long id){
+        this.id = id;
         return this;
     }
     public String displayStudentDetails(){
@@ -88,6 +93,9 @@ public abstract class Student implements Serializable{
         exam.writeExam(Integer.parseInt(studentNumber), term);
     }
 
+    public long getId(){
+        return id;
+    }
     public String getStudentName() {return studentName;}
     public Integer getStudentNumber() {
         return Integer.parseInt(studentNumber);

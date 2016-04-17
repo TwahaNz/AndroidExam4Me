@@ -17,6 +17,7 @@ import java.io.Serializable;
  */
 public class ResidentStudent extends Student implements Serializable{
 
+    private Long id;
     private MealFeeImpl mealFee;
     private FeesImpl tuitionFee;
     private ResidentFeeImpl residenceFee;
@@ -28,6 +29,11 @@ public class ResidentStudent extends Student implements Serializable{
         mealFee = builder.mealFee;
         tuitionFee = builder.tuitionFee;
         residenceFee = builder.residenceFee;
+        this.id = builder.id;
+    }
+
+    public long getId(){
+        return id;
     }
 
     @Override
@@ -70,6 +76,7 @@ public class ResidentStudent extends Student implements Serializable{
 
     public static class Builder extends Student{
 
+        private Long id;
         private MealFeeImpl mealFee;
         private FeesImpl tuitionFee;
         private ResidentFeeImpl residenceFee;
@@ -80,6 +87,11 @@ public class ResidentStudent extends Student implements Serializable{
             mealFee = MealFee.getInstance();
             tuitionFee = TuitionFee.getInstance();
             residenceFee = ResidentFee.getInstance();
+        }
+
+        public Builder id(long id){
+            this.id = id;
+            return this;
         }
 
         public Builder studentName(String studentName) {
@@ -134,7 +146,7 @@ public class ResidentStudent extends Student implements Serializable{
             return new ResidentStudent(this);
         }
 
-        public Builder copyNonResidentStudent(ResidentStudent student){
+        public Builder copyResidentStudent(ResidentStudent student){
 
             mealFee = student.mealFee;
             tuitionFee = student.tuitionFee;
@@ -143,6 +155,25 @@ public class ResidentStudent extends Student implements Serializable{
             studentNumber = student.studentNumber;
 
             return this;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+
+            if (this == o)
+                return true;
+
+            if (o == null || this.getClass() != o.getClass())
+                return false;
+
+            ResidentStudent student = (ResidentStudent) o;
+
+            return id != null ? id.equals(student.id):student.id == 0;
+        }
+
+        @Override
+        public int hashCode() {
+            return id != null ? id.hashCode():0;
         }
     }
 }

@@ -2,7 +2,9 @@ package com.tnz.app.exam4me;
 
 import com.tnz.app.exam4me.Factory.FacultyFactoryTest;
 import com.tnz.app.exam4me.Factory.LecturerFactoryTest;
-import com.tnz.app.exam4me.Factory.StudentTypeFactoryTest;
+import com.tnz.app.exam4me.Factory.NonResidentStudentTypeFactoryTest;
+import com.tnz.app.exam4me.Factory.ResidentStudentFactoryTest;
+import com.tnz.app.exam4me.Factory.ResultsFactoryTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -15,7 +17,9 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         FacultyFactoryTest.class,
         LecturerFactoryTest.class,
-        StudentTypeFactoryTest.class,
-        })
+        ResidentStudentFactoryTest.class,
+        NonResidentStudentTypeFactoryTest.class,
+        ResultsFactoryTest.class
+})
 
 public class AppUnitTestSuite {}

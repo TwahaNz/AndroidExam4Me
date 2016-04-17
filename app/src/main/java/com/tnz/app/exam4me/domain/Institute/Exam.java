@@ -8,6 +8,7 @@ import java.util.*;
  */
 public class Exam implements Serializable{
 
+    private long id;
     private static List<Map<Integer, int[]>>[] marks;
     private static Map<Integer, int[]> mark;
     private static Exam exams;
@@ -49,6 +50,10 @@ public class Exam implements Serializable{
             marks[3].add(mark);
     }
 
+    public long getId(){
+        return id;
+    }
+
     public int[] getTermResult(String studentNumber, int term){
 
         Integer studNum = Integer.parseInt(studentNumber.trim());
@@ -67,4 +72,6 @@ public class Exam implements Serializable{
 
         return null;
     }
+
+
 }

@@ -1,7 +1,7 @@
 package com.tnz.app.exam4me.domain.Institute;
 
 
-import com.tnz.app.exam4me.conf.ResultsFactory;
+import com.tnz.app.exam4me.factories.Results.ResultsFactory;
 
 import java.io.Serializable;
 

@@ -10,7 +10,7 @@ import org.junit.Test;
 /**
  * Created by Admin on 2016/04/16.
  */
-public class StudentTypeFactoryTest {
+public class NonResidentStudentTypeFactoryTest {
 
     @Test
     public void testCreate() throws Exception {
@@ -23,10 +23,10 @@ public class StudentTypeFactoryTest {
     @Test
     public void testUpdate() throws Exception {
 
-        Student accStudent = new ResidentStudent.Builder().studentName("Kevin").studentNumber("21564876").build();
+        Student accStudent = new NonResidentStudent.Builder().studentName("Kevin").studentNumber("21564876").build();
 
-        Student newAccStudent = new ResidentStudent.Builder()
-                .copyNonResidentStudent((ResidentStudent) accStudent)
+        Student newAccStudent = new NonResidentStudent.Builder()
+                .copyNonResidentStudent((NonResidentStudent) accStudent)
                 .studentName("Kevin Jr")
                 .build();
 

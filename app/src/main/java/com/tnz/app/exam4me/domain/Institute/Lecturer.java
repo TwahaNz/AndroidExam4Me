@@ -10,8 +10,7 @@ import com.tnz.app.exam4me.services.UploadMarksImpl;
 //// TODO: 2016/04/16  remove the uploadMarksImpl
 public class Lecturer implements UploadMarksImpl, Serializable
 {
-
-
+    private Long id;
     private Faculty lectureFaculty;
     private Map<Integer, Student> students;
     private String name;
@@ -25,10 +24,15 @@ public class Lecturer implements UploadMarksImpl, Serializable
         this.roomNumber = builder.roomNumber;
         this.staffID = builder.staffID;
         this.lectureFaculty = builder.lectureFaculty;
+        this.id = builder.id;
     }
     
     public void assignStudentMarks(Map<Integer, Student> studentsMarks){
         this.students = studentsMarks;
+    }
+
+    public long getId(){
+        return id;
     }
 
     public String getName() {
@@ -54,11 +58,17 @@ public class Lecturer implements UploadMarksImpl, Serializable
 
     public static class Builder
     {
-        Faculty lectureFaculty;
+        private long id;
+        private Faculty lectureFaculty;
         private String name;
         private String roomNumber;
         private String staffID;
-                
+
+        public Builder assignId(long id){
+            this.id = id;
+            return this;
+        }
+
         public Builder assignName(String name){
             this.name = name;
             return this;
@@ -93,5 +103,23 @@ public class Lecturer implements UploadMarksImpl, Serializable
 
             return this;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+
+        if (o == null || this.getClass() != o.getClass())
+            return false;
+
+        Lecturer lecturer = (Lecturer) o;
+
+        return id != null ? id.equals(lecturer.id): lecturer.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

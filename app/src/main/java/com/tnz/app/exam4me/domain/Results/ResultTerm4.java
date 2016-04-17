@@ -8,8 +8,8 @@ import java.io.Serializable;
 
 /**
  * Write a description of class ResultTerm4 here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
 public class ResultTerm4 extends Results implements Serializable{
@@ -24,5 +24,5 @@ public class ResultTerm4 extends Results implements Serializable{
             else
                 return null;
     }
-    
+
 }
